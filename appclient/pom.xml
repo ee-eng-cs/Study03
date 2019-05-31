@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+	<artifactId>Study03_appclient</artifactId>
+    <packaging>app-client</packaging>
+	<name>${project.artifactId}</name>
+	
+	<parent>
+		<groupId>kp</groupId>
+		<artifactId>Study03</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>kp</groupId>
+            <artifactId>Study03_common</artifactId>
+			<version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.spec.javax.ejb</groupId>
+            <artifactId>jboss-ejb-api_3.2_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+		<finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-acr-plugin</artifactId>
+                <version>${maven.acr.plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>false</addClasspath>                      
+							<mainClass>${appclient.mainClass}</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
